@@ -33,7 +33,7 @@ public class DoctorEntryController {
         
     private void doAction() {
         if(model == null) {
-        	model = new DoctorEntry();
+        	model = DoctorEntry.builder().license(view.getLicenseEntry().getText()).name(view.getNameEntry().getText()).build();
         	model.setLicense(view.getLicenseEntry().getText());
         	model.setName(view.getNameEntry().getText());
             repository.save(model);
