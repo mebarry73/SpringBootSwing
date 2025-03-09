@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -67,7 +68,12 @@ public class BarryController extends JFrame {
 
 		viewPsychotherapists.setVisible(false);
 		if ("Read Person CSV".equals(actionCommand)) {
-			new ImportCSV();
+			ImportCSV instance = ImportCSV.getInstance();
+			try {
+				instance.importPersons();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		} else if ("View Doctor".equals(actionCommand)) {
 			viewPsychotherapists.setDoctors(doctorRepository.findAll().toArray());
 			viewPsychotherapists.setVisible(true);

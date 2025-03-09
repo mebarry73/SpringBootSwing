@@ -13,15 +13,19 @@ import lombok.extern.java.Log;
 @Log
 public class ImportCSV {
 
-	public ImportCSV() {
-		try {
-			importPersons();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+	private static ImportCSV INSTANCE;
+
+	private ImportCSV() {
 	}
 
-	private void importPersons() throws FileNotFoundException {
+	public static ImportCSV getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new ImportCSV();
+		}
+		return INSTANCE;
+	}
+
+	public void importPersons() throws FileNotFoundException {
 		List<List<String>> records = new ArrayList<>();
 		File file = ResourceUtils.getFile("classpath:Persons.csv");
 		try (var scanner = new Scanner(file)) {
