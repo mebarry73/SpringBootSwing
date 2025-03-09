@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.example.demo.swing.BarryController;
+import com.example.demo.controller.BarryController;
 
 @Component
 public class SpringBootSwingCommandLineRunner implements CommandLineRunner {

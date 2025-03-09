@@ -13,9 +13,11 @@ import javax.swing.event.ChangeListener;
 
 import com.example.demo.util.Constants;
 
+import lombok.extern.java.Log;
+
+@Log
 public class MainTabbedPane extends JTabbedPane {
 	private static final long serialVersionUID = 1L;
-
 
 	public MainTabbedPane() {
 		super();
@@ -29,13 +31,11 @@ public class MainTabbedPane extends JTabbedPane {
 				processTabChange();
 			}
 		});
-
 	}
 
 	private void processTabChange() {
 		Component c = this.getSelectedComponent();
-		System.err.println("## " + c.getName());
-
+		log.info("processTabChange " + c.getName());
 	}
 
 	private JComponent makePanel(String txt) {

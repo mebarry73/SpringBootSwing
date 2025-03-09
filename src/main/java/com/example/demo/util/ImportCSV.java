@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 import org.springframework.util.ResourceUtils;
 
+import lombok.extern.java.Log;
+
+@Log
 public class ImportCSV {
 
 	public ImportCSV() {
@@ -21,21 +24,19 @@ public class ImportCSV {
 	private void importPersons() throws FileNotFoundException {
 		List<List<String>> records = new ArrayList<>();
 		File file = ResourceUtils.getFile("classpath:Persons.csv");
-		try (Scanner scanner = new Scanner(file)) {
+		try (var scanner = new Scanner(file)) {
 			while (scanner.hasNextLine()) {
-				records.add(getRecordFromLine(scanner.nextLine()));
+				String nextLine = scanner.nextLine();
+				log.info(nextLine);
+				records.add(getRecordFromLine(nextLine));
 			}
 		}
-		System.err.println("count " + records.size());
-	}
-
-	private void importDoctors() throws FileNotFoundException {
-
+		log.info("count " + records.size());
 	}
 
 	private List<String> getRecordFromLine(String line) {
 		List<String> values = new ArrayList<String>();
-		try (Scanner rowScanner = new Scanner(line)) {
+		try (var rowScanner = new Scanner(line)) {
 			rowScanner.useDelimiter(Constants.CSV_DELIMITER);
 			while (rowScanner.hasNext()) {
 				values.add(rowScanner.next());
