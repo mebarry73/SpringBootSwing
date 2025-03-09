@@ -17,20 +17,32 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-@Entity(name="doctor")
+@Entity(name = "doctor")
 @Table
 public class DoctorEntry {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-		
-    @Column
-    private String license;
 
-    @Column
-    private String name;
-    
-    public String toString() {
-    	return new StringBuffer().append(id).append(Constants.CSV_DELIMITER).append(license).append(Constants.CSV_DELIMITER).append(name).toString();
-    }
+	public DoctorEntry() {
+		
+	}
+	
+	public DoctorEntry(UUID id, String license, String name) {
+		this.id = id;
+		this.license = license;
+		this.name = name;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private UUID id;
+
+	@Column
+	private String license;
+
+	@Column
+	private String name;
+
+	public String toString() {
+		return new StringBuffer().append(id).append(Constants.CSV_DELIMITER).append(license)
+				.append(Constants.CSV_DELIMITER).append(name).toString();
+	}
 }
