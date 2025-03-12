@@ -1,10 +1,13 @@
 package com.example.demo.util;
 
 import com.example.demo.controller.BarryController;
+import com.example.demo.fhir.FhirClient;
 import com.example.demo.swing.MainMenuBar;
 import com.example.demo.swing.MainTabbedPane;
 import com.example.demo.swing.TableView;
 import com.example.demo.swing.ViewPsychotherapists;
+
+import ca.uhn.fhir.rest.client.api.IGenericClient;
 
 public class ComponentFactory {
 
@@ -24,4 +27,9 @@ public class ComponentFactory {
 	{
 		return new ViewPsychotherapists();
 	}
+	
+	public static FhirClient createClient()
+	{
+		return FhirClient.getInstance();
+	}	
 }
