@@ -5,11 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.repository.DoctorEntryRepository;
-import com.google.gson.Gson;
+import com.example.demo.util.Utils;
 
 /**
- * http://localhost:8080/Psychotherapists shows all content from DoctorEntryRepository as JSon 
- * can be extended with POST, GET, PATCH, and DELETE
+ * http://localhost:8080/Psychotherapists shows all content from
+ * DoctorEntryRepository as JSon can be extended with POST, GET, PATCH, and
+ * DELETE
  */
 @RestController
 public class BarryRestController {
@@ -19,7 +20,6 @@ public class BarryRestController {
 
 	@GetMapping("/Psychotherapists")
 	public String showPsychotherapists() {
-		Gson gson = new Gson();
-		return gson.toJson(repository.findAll());
+		return Utils.returnAsJson(repository.findAll());
 	}
 }
