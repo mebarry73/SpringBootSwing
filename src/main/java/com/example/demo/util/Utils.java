@@ -19,4 +19,10 @@ public class Utils {
 
 		return lExpression.format(values);
 	}
+
+	// Bounded Generics
+	public static <T extends DoctorEntry> List<T> sortDoctorEntry(List<T> values) {
+		values.sort((DoctorEntry d1, DoctorEntry d2) -> d1.getName().compareTo(d2.getName()));
+		return values;
+	}
 }
