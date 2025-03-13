@@ -1,8 +1,8 @@
-package com.example.demo.controller.rest;
+package com.example.demo.repository;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Optional;
 
@@ -11,10 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.example.demo.model.DoctorEntry;
-import com.example.demo.repository.DoctorEntryRepository;
 
 @DataJpaTest
-class BarryRestControllerTest {
+class DoctorEntryRepositoryTest {
 
 	@Autowired
 	private DoctorEntryRepository repository;
